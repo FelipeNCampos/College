@@ -1,0 +1,78 @@
+@startuml
+
+package entrega2_poo {
+
+  interface Desenho {
+    +desenhar(): String
+  }
+
+  abstract class Figura {
+    +calculaArea(): double
+    +calculaPerimetro(): double
+    +toString(): String
+  }
+
+  class Circulo {
+    -raio: double
+    -pi: double
+    +Circulo(raio: double)
+    +Circulo()
+    +desenhar(): String
+    +calculaArea(): double
+    +calculaPerimetro(): double
+    +getRaio(): double
+    +setRaio(raio: double): void
+    +getPi(): double
+    +setPi(pi: double): void
+  }
+
+  class Quadrado {
+    -lado: double
+    +Quadrado(lado: double)
+    +Quadrado()
+    +calculaArea(): double
+    +calculaPerimetro(): double
+    +desenhar(): String
+    +getLado(): double
+    +setLado(lado: double): void
+  }
+
+  class Retangulo {
+    -altura: double
+    +Retangulo()
+    +Retangulo(lado: double, altura: double)
+    +calculaArea(): double
+    +calculaPerimetro(): double
+    +desenhar(): String
+    +getAltura(): double
+    +setAltura(altura: double): void
+  }
+
+  class Triangulo {
+    -base: double
+    -lado1: double
+    -lado2: double
+    -altura: double
+    +Triangulo()
+    +Triangulo(base, altura, lado1, lado2)
+    +calculaArea(): double
+    +calculaPerimetro(): double
+    +desenhar(): String
+    +getBase(), getAltura(), getLado1(), getLado2()
+    +setBase(), setAltura(), setLado1(), setLado2()
+  }
+
+  class Teste {
+    +main(args: String[]): void
+  }
+
+  Desenho <|.. Figura
+  Figura <|-- Circulo
+  Figura <|-- Quadrado
+  Figura <|-- Triangulo
+  Quadrado <|-- Retangulo
+  Teste --> Figura : usa
+
+}
+
+@enduml
